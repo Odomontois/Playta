@@ -56,3 +56,8 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+.idea/*
+project/target/*
+target/*
+project/project/*
