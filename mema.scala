@@ -5,9 +5,9 @@
 import unitItems._
 
 val items = Seq (
-  Rel (tonn, 1000, kg),
-  Rel (pound, .72, kg),
-  Rel (hour, 60, minute)
+  tonn from kg by 1000,
+  pound from kg by .72,
+  hour from minute by 60
 )
 
 val ccc = CaseClassCollection (items)
@@ -15,8 +15,8 @@ val ccc = CaseClassCollection (items)
 LinesWiever.delayedInit {
   LinesWiever.names = ccc.names
   LinesWiever.lines.setAll (ccc.values: _*)
-  println( LinesWiever.names )
-  println( LinesWiever.lines)
+  println (LinesWiever.names)
+  println (LinesWiever.lines)
 }
 
-LinesWiever.main(Array())
+LinesWiever.main (Array ())
