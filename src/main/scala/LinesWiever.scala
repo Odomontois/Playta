@@ -17,19 +17,26 @@ import scalafx.scene.text.Text
  * Created by Oleg on 07.10.2014.
  */
 object LinesWiever extends JFXApp {
-  var lines = ObservableBuffer[String]()
+  val lines = ObservableBuffer[Map[String, String]]()
+  val table = new TableView[Map[String, String]](lines)
+  private var _names: Seq[String] = Seq.empty
+
+  def names = _names
+
+  def names_=(names: Seq[String]) {
+    _names = names
+    val cols = names map (name => new TableColumn[Map[String, String], String](name) {
+      cellValueFactory = c => new StringProperty (c.value get name get)
+    })
+    table.columns.clear()
+    cols foreach { table.columns += _}
+  }
 
   stage = new PrimaryStage {
     title = "Hello World!"
     scene = new Scene {
       fill = Black
-      content = new TableView[String](lines) {
-        columns += new TableColumn[String, String] {
-          text = "phraze"
-          cellValueFactory = { s => new StringProperty (s.value) }
-          prefWidth = 1000
-        }
-      }
+      content = table
     }
   }
 }
