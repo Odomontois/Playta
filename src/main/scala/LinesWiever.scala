@@ -26,7 +26,7 @@ object LinesWiever extends JFXApp {
   def names_=(names: Seq[String]) {
     _names = names
     val cols = names map (name => new TableColumn[Map[String, String], String](name) {
-      cellValueFactory = c => new StringProperty (c.value get name get)
+      cellValueFactory = c => new StringProperty (c.value(name))
     })
     table.columns.clear()
     cols foreach { table.columns += _}
