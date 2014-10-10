@@ -4,4 +4,5 @@
 
 (defprotocol Helloer
   "Special Protocol for greeting"
-  (hello-world [x]))
+  (hello-world [x])
+ )
