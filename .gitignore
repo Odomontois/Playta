@@ -60,5 +60,7 @@ $RECYCLE.BIN/
 .idea/*
 project/target/*
 target/*
+cellio/target/*
+out/*
 project/project/*
 *.log
